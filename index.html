@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<!-- <style> -->
+* {
+margin: 0;
+padding: 0;
+
+}
+
+body {
+height: 100vh;
+width: 100%;
+background-color: black;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.calculator {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: rgb(247, 202, 243);
+padding: 10px;
+border-radius: 10px;
+}
+
+#display {
+width: 300px;
+height: 100px;
+background-color: rgba(247, 206, 234, );
+border-radius: 10px;
+border: none;
+outline: none;
+color: black;
+font-size: 40px;
+text-align: right;
+padding: 10px;
+margin-bottom: auto;
+;
+}
+
+.Allbuttons {
+display: flex;
+justify-content: center;
+width: 100%;
+height: 100%;
+}
+
+.mycol {
+display: flex;
+flex-direction: column;
+}
+
+.mybtn1 {
+background-color: rgb(219, 124, 7);
+border-radius: 50%;
+border: none;
+margin: 5px;
+color: rgba(5, 3, 0, 0.968);
+font-size: 25px;
+padding: 10px;
+height: 70px;
+width: 70px;
+}
+
+.mybtn2 {
+background-color: rgba(75, 73, 73, 0.153);
+border-radius: 50%;
+border: none;
+margin: 5px;
+color: rgba(5, 3, 0, 0.968);
+font-size: 25px;
+padding: 10px;
+height: 70px;
+width: 70px;
+}
+
+.mybtn3 {
+background-color: rgb(239, 84, 133);
+border-radius: 50%;
+border: none;
+margin: 5px;
+color: rgba(5, 3, 0, 0.968);
+font-size: 25px;
+padding: 10px;
+height: 70px;
+width: 70px;
+}
+<!-- </style> -->
+
+<body>
+    <!-- AC () % / -->
+    <!-- 7 8 9 * -->
+    <!-- 4 5 6 - -->
+    <!-- 1 2 3 + -->
+    <!-- 0 . <> = -->
+
+    <div class="calculator">
+        <h1> My calculator </h1>
+        <input id="display" />
+        <div class="Allbuttons">
+            <div class="mycol">
+                <div class="row">
+                    <button class="mybtn1" onclick="addtodisplay('AC')">AC</button>
+                    <button class="mybtn1" onclick="addtodisplay('()')">( )</button>
+                    <button class="mybtn1" onclick="addtodisplay('%')">%</button>
+                </div>
+
+                <div class="myrow">
+                    <button class="mybtn2" onclick="addtodisplay('7')">7</button>
+                    <button class="mybtn2" onclick="addtodisplay('8')">8</button>
+                    <button class="mybtn2" onclick="addtodisplay('9')">9</button>
+                </div>
+
+                <div class="myrow">
+                    <button class="mybtn2" onclick="addtodisplay('4')">4</button>
+                    <button class="mybtn2" onclick="addtodisplay('5')">5</button>
+                    <button class="mybtn2" onclick="addtodisplay('6')">6</button>
+                </div>
+
+                <div>
+                    <button class="mybtn2" onclick="addtodisplay('1')">1</button>
+                    <button class="mybtn2" onclick="addtodisplay('2')">2</button>
+                    <button class="mybtn2" onclick="addtodisplay('3')">3</button>
+                </div>
+
+                <div>
+                    <button class="mybtn2" onclick="addtodisplay('0')">0</button>
+                    <button class="mybtn2" onclick="addtodisplay('.')">.</button>
+                    <button class="mybtn2" onclick="addtodisplay('Back')">&lt;</button>
+                </div>
+            </div>
+            <div class="mycol">
+                <button class="mybtn3" onclick="addtodisplay('/')">/</button>
+                <button class="mybtn3" onclick="addtodisplay('*')">*</button>
+                <button class="mybtn3" onclick="addtodisplay('-')">-</button>
+                <button class="mybtn3" onclick="addtodisplay('+')">+</button>
+                <button class="mybtn3" onclick="addtodisplay('=')">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- <script> -->
+
+let bracketflag = 0;
+const addtodisplay = (myval) => {
+let display = document.getElementById("display");
+if (myval == "AC") {
+display.value = "";
+bracketflag = 0;
+}
+else if (myval == "Back") {
+display.value = display.value.slice(0, -1);
+}
+else if (myval == "()") {
+if (bracketflag == 0) {
+display.value += "(";
+bracketflag = 1;
+}
+else if (bracketflag == 1) {
+display.value += ")";
+bracketflag = 0;
+}
+// this is not working
+}
+else if (myval == "=") {
+try {
+display.value = eval(display.value);
+}
+catch {
+display.value = "Error";
+}
+}
+else {
+display.value += myval;
+}
+}
+
+
+<!-- </script> -->
+<script src="./script.js"></script>
+
+</html>
